@@ -81,6 +81,7 @@ sendChatButton.addEventListener('click', () => {
             const aiResponse = generateAIResponse(message);
             chatHistory.push({ sender: 'AI Friend', message: aiResponse, timestamp: new Date() });
             displayChat();
+            addNotification(`AI Friend sent you a message: ${aiResponse}`);
         }, 1000);
     }
 });
@@ -127,6 +128,31 @@ function getRandomJoke() {
         "What do you call cheese that isn't yours? Nacho cheese."
     ];
     return jokes[Math.floor(Math.random() * jokes.length)];
+}
+
+// Add notification
+function addNotification(message) {
+    if (Notification.permission === 'granted') {
+        new Notification('Social-Ai Notification', {
+            body: message,
+            icon: 'icon.png'
+        });
+    }
+}
+
+// Request notification permission
+if (Notification.permission !== 'granted') {
+    Notification.requestPermission();
+}
+
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('service-worker.js')
+        .then(registration => {
+            console.log('Service Worker registered with scope:', registration.scope);
+        })
+        .catch(error => {
+            console.error('Service Worker registration failed:', error);
+        });
 }
 
 displayPosts();

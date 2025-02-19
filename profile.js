@@ -1,28 +1,41 @@
-const saveProfileButton = document.getElementById('save-profile');
-const avatarUpload = document.getElementById('avatar-upload');
 const userAvatar = document.getElementById('user-avatar');
+const avatarUpload = document.getElementById('avatar-upload');
 const usernameInput = document.getElementById('username-input');
-const achievementsList = document.getElementById('achievements-list');
+const bioInput = document.getElementById('bio-input');
+const saveProfileButton = document.getElementById('save-profile');
+const backgroundUpload = document.getElementById('background-upload');
+const reelsContainer = document.getElementById('reels-container');
+const photoAlbumsContainer = document.getElementById('photo-albums-container');
+const userPostsContainer = document.getElementById('user-posts-container');
 
-let userProfile = {
+let userProfile = JSON.parse(localStorage.getItem('userProfile')) || {
     avatar: 'default-avatar.png',
     username: 'User',
-    achievements: []
+    bio: '',
+    background: 'default-background.png',
+    reels: [],
+    photoAlbums: [],
+    posts: []
 };
 
 // Load profile from local storage
-if (localStorage.getItem('userProfile')) {
-    userProfile = JSON.parse(localStorage.getItem('userProfile'));
+function loadProfile() {
     userAvatar.src = userProfile.avatar;
     usernameInput.value = userProfile.username;
-    displayAchievements();
+    bioInput.value = userProfile.bio;
+    document.body.style.backgroundImage = `url(${userProfile.background})`;
+    displayReels();
+    displayPhotoAlbums();
+    displayPosts();
 }
 
 // Save profile to local storage
 saveProfileButton.addEventListener('click', () => {
     userProfile.username = usernameInput.value || 'User';
+    userProfile.bio = bioInput.value;
     localStorage.setItem('userProfile', JSON.stringify(userProfile));
     alert('Profile saved!');
+    loadProfile();
 });
 
 // Upload avatar
@@ -35,12 +48,54 @@ avatarUpload.addEventListener('change', (event) => {
     reader.readAsDataURL(event.target.files[0]);
 });
 
-// Display achievements
-function displayAchievements() {
-    achievementsList.innerHTML = '';
-    userProfile.achievements.forEach((achievement) => {
-        const li = document.createElement('li');
-        li.textContent = achievement;
-        achievementsList.appendChild(li);
+// Upload background picture
+backgroundUpload.addEventListener('change', (event) => {
+    const reader = new FileReader();
+    reader.onload = () => {
+        userProfile.background = reader.result;
+        document.body.style.backgroundImage = `url(${reader.result})`;
+    };
+    reader.readAsDataURL(event.target.files[0]);
+});
+
+// Display reels
+function displayReels() {
+    reelsContainer.innerHTML = '';
+    userProfile.reels.forEach((reel, index) => {
+        const video = document.createElement('video');
+        video.controls = true;
+        video.src = reel;
+        reelsContainer.appendChild(video);
     });
 }
+
+// Display photo albums
+function displayPhotoAlbums() {
+    photoAlbumsContainer.innerHTML = '';
+    userProfile.photoAlbums.forEach((album, index) => {
+        const img = document.createElement('img');
+        img.src = album;
+        img.classList.add('photo-album');
+        photoAlbumsContainer.appendChild(img);
+    });
+}
+
+// Display posts
+function displayPosts() {
+    userPostsContainer.innerHTML = '';
+    userProfile.posts.forEach((post, index) => {
+        const postDiv = document.createElement('div');
+        postDiv.classList.add('post');
+        postDiv.innerHTML = `<p>${post.text}</p><small>${new Date(post.timestamp).toLocaleString()}</small>`;
+        if (post.media) {
+            if (post.mediaType.startsWith('image/')) {
+                postDiv.innerHTML += `<img src="${post.media}" alt="Post media" class="post-media">`;
+            } else if (post.mediaType.startsWith('video/')) {
+                postDiv.innerHTML += `<video controls class="post-media"><source src="${post.media}" type="${post.mediaType}"></video>`;
+            }
+        }
+        userPostsContainer.appendChild(postDiv);
+    });
+}
+
+loadProfile();
