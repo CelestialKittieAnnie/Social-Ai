@@ -1,140 +1,111 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f7f7f7;
     margin: 0;
     padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-}
-
-.container {
-    width: 80%;
-    max-width: 1200px;
-    background-color: #ffffff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-    overflow: hidden;
+    background-color: #f4f4f4;
 }
 
 header {
-    background-color: #ffb6c1;
-    padding: 20px;
+    background-color: #333;
+    color: white;
     text-align: center;
-    font-size: 1.5em;
-    color: #ffffff;
+    padding: 1rem 0;
 }
 
 main {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    padding: 20px;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
 }
 
-.profile, .social-media, .chat {
-    flex: 1 1 30%;
-    margin: 10px;
-    padding: 20px;
-    background-color: #faf0e6;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+section {
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    width: 100%;
+    max-width: 600px;
 }
 
-.profile img {
+h2 {
+    border-bottom: 2px solid #333;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+button {
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #555;
+}
+
+input[type="text"],
+textarea {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+input[type="file"] {
+    margin-bottom: 1rem;
+}
+
+#chat-container {
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    padding: 1rem;
+    max-height: 300px;
+    overflow-y: auto;
+    margin-bottom: 1rem;
+}
+
+.chat-message {
+    margin-bottom: 1rem;
+}
+
+.chat-message strong {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.post {
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+}
+
+.post:last-child {
+    border-bottom: none;
+}
+
+#user-avatar {
+    display: block;
+    margin: 0 auto 1rem;
     width: 100px;
     height: 100px;
     border-radius: 50%;
+    object-fit: cover;
 }
 
-.profile-info {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.profile-info input[type="file"] {
-    margin: 10px 0;
-}
-
-.profile-info input[type="text"] {
-    padding: 10px;
-    margin: 10px 0;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-}
-
-.profile-info button {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    background-color: #ffb6c1;
-    color: #fff;
-    cursor: pointer;
-}
-
-.achievements ul {
-    list-style: none;
+ul {
+    list-style-type: none;
     padding: 0;
 }
 
-.achievements li {
-    background-color: #ffe4e1;
-    margin: 5px 0;
-    padding: 10px;
-    border-radius: 5px;
-}
-
-.social-media #posts-container {
-    max-height: 400px;
-    overflow-y: auto;
-    margin-bottom: 20px;
-}
-
-.new-post textarea {
-    width: 100%;
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    margin-bottom: 10px;
-}
-
-.new-post button {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    background-color: #ffb6c1;
-    color: #fff;
-    cursor: pointer;
-}
-
-.chat #chat-container {
-    max-height: 400px;
-    overflow-y: auto;
-    margin-bottom: 10px;
-}
-
-.chat input[type="text"] {
-    width: calc(100% - 90px);
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    margin-right: 10px;
-}
-
-.chat button {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    background-color: #ffb6c1;
-    color: #fff;
-    cursor: pointer;
-}
-
-footer {
-    background-color: #ffb6c1;
-    padding: 10px;
-    text-align: center;
-    color: #ffffff;
+li {
+    background-color: #eee;
+    border-radius: 3px;
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
 }
