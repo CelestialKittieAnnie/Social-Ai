@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Friend Chat Game</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>AI Friend Chat Game</h1>
+    </header>
+    <main>
+        <section id="profile-section">
+            <h2>Profile</h2>
+            <div id="profile-container">
+                <img id="user-avatar" src="default-avatar.png" alt="User Avatar">
+                <input type="file" id="avatar-upload">
+                <input type="text" id="username" placeholder="Enter your username">
+                <button id="save-profile">Save Profile</button>
+            </div>
+        </section>
+        <section id="achievements-section">
+            <h2>Achievements</h2>
+            <ul id="achievements-list"></ul>
+        </section>
+        <section id="posts-section">
+            <h2>Posts</h2>
+            <div id="posts-container"></div>
+            <textarea id="new-post-text" placeholder="Write a new post..."></textarea>
+            <button id="post-button">Post</button>
+        </section>
+        <section id="chat-section">
+            <h2>Chat</h2>
+            <div id="chat-container"></div>
+            <input type="text" id="chat-input" placeholder="Type a message...">
+            <button id="send-chat">Send</button>
+        </section>
+    </main>
+    <script src="scripts.js"></script>
+</body>
+</html>
