@@ -1,0 +1,140 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f7f7f7;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    width: 80%;
+    max-width: 1200px;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+header {
+    background-color: #ffb6c1;
+    padding: 20px;
+    text-align: center;
+    font-size: 1.5em;
+    color: #ffffff;
+}
+
+main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.profile, .social-media, .chat {
+    flex: 1 1 30%;
+    margin: 10px;
+    padding: 20px;
+    background-color: #faf0e6;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+.profile img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+.profile-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile-info input[type="file"] {
+    margin: 10px 0;
+}
+
+.profile-info input[type="text"] {
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.profile-info button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #ffb6c1;
+    color: #fff;
+    cursor: pointer;
+}
+
+.achievements ul {
+    list-style: none;
+    padding: 0;
+}
+
+.achievements li {
+    background-color: #ffe4e1;
+    margin: 5px 0;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.social-media #posts-container {
+    max-height: 400px;
+    overflow-y: auto;
+    margin-bottom: 20px;
+}
+
+.new-post textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+}
+
+.new-post button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #ffb6c1;
+    color: #fff;
+    cursor: pointer;
+}
+
+.chat #chat-container {
+    max-height: 400px;
+    overflow-y: auto;
+    margin-bottom: 10px;
+}
+
+.chat input[type="text"] {
+    width: calc(100% - 90px);
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-right: 10px;
+}
+
+.chat button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #ffb6c1;
+    color: #fff;
+    cursor: pointer;
+}
+
+footer {
+    background-color: #ffb6c1;
+    padding: 10px;
+    text-align: center;
+    color: #ffffff;
+}
